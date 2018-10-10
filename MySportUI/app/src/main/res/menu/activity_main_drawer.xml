@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/home"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="主页" />
+        <item
+            android:id="@+id/time"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="周边" />
+
+        <item
+            android:id="@+id/news"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="资讯" />
+
+        <item
+            android:id="@+id/course"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="课程" />
+
+        <item
+            android:id="@+id/coach"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="教练" />
+
+        <item
+            android:id="@+id/share"
+            android:icon="@drawable/ic_menu_share"
+            android:title="分享" />
+
+
+    </group>
+
+    <item android:title="我的">
+        <menu>
+            <item
+                android:id="@+id/info"
+                android:icon="@drawable/ic_menu_manage"
+                android:title="个人中心" />
+            <item
+                android:id="@+id/login"
+                android:icon="@drawable/ic_menu_send"
+                android:title="登陆/切换账户" />
+        </menu>
+    </item>
+
+</menu>
