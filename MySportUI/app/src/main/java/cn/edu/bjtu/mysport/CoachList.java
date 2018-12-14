@@ -1,6 +1,9 @@
 package cn.edu.bjtu.mysport;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,6 +12,7 @@ import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -36,10 +40,11 @@ public class CoachList extends AppCompatActivity {
         ItemTouchHelper touchHelper = new ItemTouchHelper(callback);
         touchHelper.attachToRecyclerView(mRecyclerView);
 
+//        ImageButton callButton = (ImageButton) findViewById(R.id.)
     }
 
     //adapter
-    class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> implements ItemTouchHelperAdapter{
+    class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> implements ItemTouchHelperAdapter {
 
         LayoutInflater mInflater;
         List<MData> mList = addData();
@@ -50,7 +55,7 @@ public class CoachList extends AppCompatActivity {
 
         @Override
         public MyAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View view = mInflater.inflate(R.layout.cardview,parent,false);
+            View view = mInflater.inflate(R.layout.cardview, parent, false);
             ViewHolder viewHolder = new ViewHolder(view);
             return viewHolder;
         }
@@ -66,10 +71,11 @@ public class CoachList extends AppCompatActivity {
         public int getItemCount() {
             return mList.size();
         }
+
         @Override
         public void onItemMove(int fromPosition, int toPosition) {
-            Collections.swap(mList,fromPosition,toPosition);
-            notifyItemMoved(fromPosition,toPosition);
+            Collections.swap(mList, fromPosition, toPosition);
+            notifyItemMoved(fromPosition, toPosition);
         }
 
         @Override
@@ -82,11 +88,24 @@ public class CoachList extends AppCompatActivity {
             private TextView mName;
             private TextView mDescribe;
             private ImageView mPhoto;
+            private ImageButton mCall;
+
             public ViewHolder(View itemView) {
                 super(itemView);
                 mName = itemView.findViewById(R.id.txt_name);
                 mDescribe = itemView.findViewById(R.id.txt_describe);
-                mPhoto= itemView.findViewById(R.id.txt_image);
+                mPhoto = itemView.findViewById(R.id.txt_image);
+                mCall = itemView.findViewById(R.id.callButton);
+                mCall.setOnClickListener(new View.OnClickListener() {
+                    @SuppressLint("MissingPermission")
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(Intent.ACTION_DIAL);
+                        Uri data = Uri.parse("tel:15357606638");
+                        intent.setData(data);
+                        startActivity(intent);
+                    }
+                });
             }
         }
     }
