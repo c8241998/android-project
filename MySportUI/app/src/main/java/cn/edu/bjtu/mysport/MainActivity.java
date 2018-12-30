@@ -194,7 +194,7 @@ public class MainActivity extends AppCompatActivity
         editor.commit();
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.179.1:8000/")
+                .baseUrl("http://localhost:8000/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build();
